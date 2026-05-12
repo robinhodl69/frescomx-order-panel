@@ -10,7 +10,7 @@ Estados: [ ] pendiente · [~] en progreso · [x] completado
 ## Setup y documentación
 
 - [x] `chore: project setup Next.js 16 + TypeScript + Tailwind + OpenAI`
-- [ ] `docs: add spec-driven files (AGENTS, requirements, design, tasks)`
+- [x] `docs: add spec-driven files (AGENTS, requirements, design, tasks)`
 
 ***
 
