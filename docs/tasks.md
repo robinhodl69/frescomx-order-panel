@@ -16,9 +16,9 @@ Estados: [ ] pendiente · [~] en progreso · [x] completado
 
 ## Tarea 1 — Catálogo de productos
 **Archivo:** `data/catalog.json`
-- [ ] 15 productos con id, nombre, sinónimos, precio MXN y unidad
-- [ ] Sinónimos reales: jitomate ≈ tomate ≈ tomate saladette
-- [ ] `feat: product catalog with 15 items and synonyms`
+- [x] 15 productos con id, nombre, sinónimos, precio MXN y unidad
+- [x] Sinónimos reales: jitomate ≈ tomate ≈ tomate saladette
+- [x] `feat: product catalog with 15 items and synonyms`
 
 ## Tarea 2 — Tipos TypeScript
 **Archivo:** `lib/types.ts`
