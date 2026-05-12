@@ -22,11 +22,11 @@ Estados: [ ] pendiente · [~] en progreso · [x] completado
 
 ## Tarea 2 — Tipos TypeScript
 **Archivo:** `lib/types.ts`
-- [ ] `Product` — estructura del catálogo
-- [ ] `OrderItem` — item parseado con flag de ambigüedad
-- [ ] `ParsedOrder` — respuesta de OpenAI con cliente e items
-- [ ] `DailyOrder` — pedido en la tabla del día con estado
-- [ ] `feat: TypeScript domain types`
+- [x] `Product` — estructura del catálogo
+- [x] `OrderItem` — item parseado con flag de ambigüedad
+- [x] `ParsedOrder` — respuesta de OpenAI con cliente e items
+- [x] `DailyOrder` — pedido en la tabla del día con estado
+- [x] `feat: TypeScript domain types`
 
 ## Tarea 3 — Lógica de matching contra catálogo
 **Archivo:** `lib/parser.ts`
