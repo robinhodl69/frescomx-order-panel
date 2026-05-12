@@ -45,10 +45,18 @@ Estados: [ ] pendiente · [~] en progreso · [x] completado
 
 ## Tarea 5 — Componente de entrada de texto
 **Archivo:** `components/ParseInput.tsx`
-- [ ] Textarea para pegar mensaje crudo de WhatsApp
-- [ ] Botón "Parsear pedido" con estado de loading
-- [ ] Validación inline si el campo está vacío
-- [ ] `feat: parse input component`
+- [x] Textarea para pegar mensaje crudo de WhatsApp
+- [x] Botón "Parsear pedido" con estado de loading
+- [x] Validación inline si el campo está vacío
+- [x] `feat: parse input component`
+
+## Tarea 5b — Componente tabla de pedidos diarios
+**Archivo:** `components/DailyOrdersTable.tsx`
+- [x] Tabla con columnas: Cliente, Productos, Total, Status, Acciones
+- [x] Empty state: "No hay pedidos registrados hoy"
+- [x] Badges visuales por status (confirmed/ambiguous/pending)
+- [x] Highlight sutil para filas ambiguas
+- [x] `feat: daily orders tabla component`
 
 ## Tarea 6 — Tabla de pedidos editable
 **Archivo:** `components/OrderTable.tsx`
