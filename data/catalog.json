@@ -8,10 +8,17 @@
       "unit": "kg"
     },
     {
-      "id": "cebolla",
-      "name": "Cebolla",
-      "synonyms": ["cebolla blanca", "cebolla morada"],
-      "price": 28.00,
+      "id": "cebolla-blanca",
+      "name": "Cebolla Blanca",
+      "synonyms": ["cebolla", "cebolla de cabeza", "cebolla blanca"],
+      "price": 25.00,
+      "unit": "kg"
+    },
+    {
+      "id": "cebolla-morada",
+      "name": "Cebolla Morada",
+      "synonyms": ["cebolla roja", "cebolla morada"],
+      "price": 32.00,
       "unit": "kg"
     },
     {
@@ -71,11 +78,12 @@
       "unit": "kg"
     },
     {
-      "id": "chile-serrano",
-      "name": "Chile Serrano",
-      "synonyms": ["chile verde", "serranito"],
-      "price": 68.00,
-      "unit": "kg"
+      "id": "chile-poblano",
+      "name": "Chile Poblano",
+      "synonyms": ["chile", "poblano", "chile verde", "chile serrano"],
+      "price": 55.00,
+      "unit": "kg",
+      "description": "Disponible también por caja a $320/caja"
     },
     {
       "id": "naranja",
