@@ -37,11 +37,11 @@ Estados: [ ] pendiente · [~] en progreso · [x] completado
 
 ## Tarea 4 — API route de parseo con OpenAI
 **Archivo:** `app/api/parse/route.ts`
-- [ ] Recibe `{ text, catalog }` por POST
-- [ ] Prompt estructurado que retorna JSON con cliente, items, `pedido_ambiguo`, `nota_ambiguedad`
-- [ ] Maneja items ambiguos con `ambiguo: true` y `producto_id: null`
-- [ ] Responde 500 con mensaje descriptivo si OpenAI falla
-- [ ] `feat: OpenAI parse API route`
+- [x] Recibe `{ text, catalog }` por POST
+- [x] Prompt estructurado que retorna JSON con cliente, items, `pedido_ambiguo`, `nota_ambiguedad`
+- [x] Maneja items ambiguos con `ambiguo: true` y `producto_id: null`
+- [x] Responde 500 con mensaje descriptivo si OpenAI falla
+- [x] `feat: OpenAI parse API route`
 
 ## Tarea 5 — Componente de entrada de texto
 **Archivo:** `components/ParseInput.tsx`
