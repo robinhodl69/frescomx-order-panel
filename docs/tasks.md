@@ -30,10 +30,10 @@ Estados: [ ] pendiente · [~] en progreso · [x] completado
 
 ## Tarea 3 — Lógica de matching contra catálogo
 **Archivo:** `lib/parser.ts`
-- [ ] Match por nombre oficial y sinónimos (case insensitive)
-- [ ] Retorna `producto_id: null` si no hay match en catálogo
-- [ ] Calcula subtotal por item (cantidad × precio_unitario)
-- [ ] `feat: catalog matcher logic`
+- [x] Match por nombre oficial y sinónimos (case insensitive)
+- [x] Retorna `producto_id: null` si no hay match en catálogo
+- [x] Calcula subtotal por item (cantidad × precio_unitario)
+- [x] `feat: catalog matcher logic`
 
 ## Tarea 4 — API route de parseo con OpenAI
 **Archivo:** `app/api/parse/route.ts`
