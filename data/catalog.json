@@ -1,0 +1,109 @@
+{
+  "products": [
+    {
+      "id": "jitomate",
+      "name": "Jitomate",
+      "synonyms": ["tomate", "tomate saladette", "jitomatito"],
+      "price": 35.00,
+      "unit": "kg"
+    },
+    {
+      "id": "cebolla",
+      "name": "Cebolla",
+      "synonyms": ["cebolla blanca", "cebolla morada"],
+      "price": 28.00,
+      "unit": "kg"
+    },
+    {
+      "id": "aguacate",
+      "name": "Aguacate",
+      "synonyms": ["aguacate hass", "palta"],
+      "price": 85.00,
+      "unit": "kg"
+    },
+    {
+      "id": "platano",
+      "name": "Plátano",
+      "synonyms": ["plátano macho", "plátano tabasco", "banana"],
+      "price": 24.00,
+      "unit": "kg"
+    },
+    {
+      "id": "cilantro",
+      "name": "Cilantro",
+      "synonyms": ["culantro", "cilantro fresco"],
+      "price": 18.00,
+      "unit": "manojo"
+    },
+    {
+      "id": "limon",
+      "name": "Limón",
+      "synonyms": ["limón verde", "limón persa"],
+      "price": 42.00,
+      "unit": "kg"
+    },
+    {
+      "id": "papa",
+      "name": "Papa",
+      "synonyms": ["papa blanca"],
+      "price": 32.00,
+      "unit": "kg"
+    },
+    {
+      "id": "zanahoria",
+      "name": "Zanahoria",
+      "synonyms": ["zanahoria naranja"],
+      "price": 22.00,
+      "unit": "kg"
+    },
+    {
+      "id": "lechuga",
+      "name": "Lechuga",
+      "synonyms": ["lechuga romana", "lechuga orejona"],
+      "price": 28.00,
+      "unit": "pieza"
+    },
+    {
+      "id": "pepino",
+      "name": "Pepino",
+      "synonyms": ["pepino fresco"],
+      "price": 26.00,
+      "unit": "kg"
+    },
+    {
+      "id": "chile-serrano",
+      "name": "Chile Serrano",
+      "synonyms": ["chile verde", "serranito"],
+      "price": 68.00,
+      "unit": "kg"
+    },
+    {
+      "id": "naranja",
+      "name": "Naranja",
+      "synonyms": ["naranja valencia"],
+      "price": 30.00,
+      "unit": "kg"
+    },
+    {
+      "id": "manzana",
+      "name": "Manzana",
+      "synonyms": ["manzana roja", "manzana golden"],
+      "price": 58.00,
+      "unit": "kg"
+    },
+    {
+      "id": "sandia",
+      "name": "Sandía",
+      "synonyms": ["sandía roja", "melón de agua"],
+      "price": 18.00,
+      "unit": "kg"
+    },
+    {
+      "id": "pina",
+      "name": "Piña",
+      "synonyms": ["piña miel", "ananá"],
+      "price": 45.00,
+      "unit": "pieza"
+    }
+  ]
+}
