@@ -107,7 +107,15 @@ export async function POST(request: NextRequest) {
     }
 
     // 4. Parsear respuesta
-    const parsed: ParsedOrder = JSON.parse(content);
+    let parsed: ParsedOrder;
+    try {
+      parsed = JSON.parse(content);
+    } catch {
+      return Response.json(
+        { error: 'OpenAI retornó una respuesta con formato inválido' },
+        { status: 500 }
+      );
+    }
 
     // 5. Validar estructura mínima
     if (!parsed.items || !Array.isArray(parsed.items)) {
