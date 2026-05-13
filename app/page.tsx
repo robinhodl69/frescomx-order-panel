@@ -6,6 +6,7 @@ import { buildOrderItems, loadCatalog } from '@/lib/parser';
 import ParseInput from '@/components/ParseInput';
 import OrderTable from '@/components/OrderTable';
 import DailyOrdersTable from '@/components/DailyOrdersTable';
+import CatalogTable from '@/components/CatalogTable';
 
 function formatCurrency(amount: number | null): string {
   if (amount === null) return '$—';
@@ -28,7 +29,7 @@ function formatDate(date: Date): string {
 
 export default function Home() {
   const [orders, setOrders] = useState<DailyOrder[]>([]);
-  const [activeTab, setActiveTab] = useState<'nuevo' | 'pedidos'>('nuevo');
+  const [activeTab, setActiveTab] = useState<'catalogo' | 'nuevo' | 'pedidos'>('catalogo');
   const [lastParsedOrder, setLastParsedOrder] = useState<DailyOrder | null>(null);
   const [parseError, setParseError] = useState<string | null>(null);
 
@@ -91,6 +92,16 @@ export default function Home() {
 
         <nav className="space-y-1">
           <button
+            onClick={() => setActiveTab('catalogo')}
+            className={`w-full rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors ${
+              activeTab === 'catalogo'
+                ? 'bg-[#E6F4EC] font-semibold text-[#1A7A3C]'
+                : 'text-[#4A6349] hover:bg-[#E6F4EC] hover:text-[#1A7A3C]'
+            }`}
+          >
+            Catálogo
+          </button>
+          <button
             onClick={() => setActiveTab('nuevo')}
             className={`w-full rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors ${
               activeTab === 'nuevo'
@@ -115,6 +126,12 @@ export default function Home() {
 
       {/* Contenido principal */}
       <main className="flex-1 p-8">
+        {activeTab === 'catalogo' && (
+          <div>
+            <CatalogTable products={catalog} />
+          </div>
+        )}
+
         {activeTab === 'nuevo' && (
           <div className="flex min-h-full items-center justify-center">
             <div className="mx-auto max-w-2xl w-full">
@@ -168,7 +185,6 @@ export default function Home() {
 
         {activeTab === 'pedidos' && (
           <div>
-            <h2 className="mb-6 text-lg font-semibold text-[#0F1F0F] font-[family-name:var(--font-display)]">Pedidos del Día</h2>
             <DailyOrdersTable orders={orders} onOrderChange={handleOrderChange} />
           </div>
         )}

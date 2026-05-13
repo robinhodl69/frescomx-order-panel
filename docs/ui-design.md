@@ -1,93 +1,70 @@
-# UI Design — FrescoMX Panel de Pedidos
+# FrescoMX — UI Design System
 
-## Referencia visual
-Estilo similar a Spinneys grocery dashboard: limpio, profesional, fondo mint suave, verde como color primario. Sin gradientes, sin sombras agresivas, sin decoración innecesaria.
-
-## Paleta de colores
+## Paleta de Colores
 
 | Token | Hex | Uso |
-|---|---|---|
-| bg | #F0F7F0 | Fondo general (mint muy suave) |
-| surface | #FFFFFF | Cards, panels, modals |
-| border | #DDE8DD | Bordes de cards e inputs |
-| primary | #1A7A3C | Botones, nav activo, links |
-| primary-hover | #15612F | Hover de botón primary |
-| primary-light | #E6F4EC | Badge confirmado bg, nav activo bg |
-| text-primary | #0F1F0F | Títulos y datos importantes |
-| text-secondary | #4A6349 | Labels, subtítulos |
-| text-muted | #8FAE8C | Placeholder, metadata |
-| amber | #D97706 | Badge Ambiguo texto |
-| amber-bg | #FFFBEB | Badge Ambiguo fondo |
-| red | #EF4444 | Error texto |
-| red-bg | #FEF2F2 | Error fondo |
-
-## Layout general
-
-Sidebar w-52 fijo a la izquierda con fondo #F0F7F0 y border-right #DDE8DD. Contenido principal a la derecha con fondo #F0F7F0. El sidebar contiene: logo emoji 🥦 + texto FrescoMX en #1A7A3C font-semibold, fecha actual debajo en text-xs text-[#8FAE8C], y los dos nav items: Nuevo Pedido y Pedidos del Día.
-
-## Sidebar
-
-- Fondo: #F0F7F0, border-right: #DDE8DD
-- Logo: emoji 🥦 + texto "FrescoMX" en #1A7A3C, font-semibold
-- Fecha actual debajo del logo: text-xs text-[#8FAE8C]
-- Nav items: rounded-lg px-3 py-2 text-sm font-medium text-[#4A6349]
-- Nav hover: bg-[#E6F4EC] text-[#1A7A3C]
-- Nav activo: bg-[#E6F4EC] text-[#1A7A3C] font-semibold
-
-## Pestaña — Nuevo Pedido
-
-Card centrada max-w-2xl mx-auto con fondo #FFFFFF, border #DDE8DD, rounded-xl.
-- Título: "Nuevo Pedido" text-lg font-semibold text-[#0F1F0F]
-- Label textarea: "Mensaje de WhatsApp" text-sm font-semibold text-[#4A6349]
-- Textarea: bg-white border border-[#DDE8DD] rounded-lg text-[#0F1F0F] placeholder:text-[#8FAE8C] focus:border-[#1A7A3C] focus:ring-2 focus:ring-[#1A7A3C]/10
-- Placeholder text: "Ej: Buenas, para mañana mándame 10 kg jitomate, 5 cajas aguacate. Soy Marco del Rincón Oaxaqueño."
-- Botón "Parsear pedido": bg-[#1A7A3C] hover:bg-[#15612F] text-white rounded-lg px-4 py-2.5 font-medium
-
-### Feedback post-parseo (inline, debajo del botón)
-
-Pedido confirmado: banner bg-[#E6F4EC] border border-[#1A7A3C]/20 rounded-lg p-3 con ícono ✅ y texto "Pedido de {cliente} creado — ${total}"
-
-Pedido ambiguo: banner bg-[#FFFBEB] border border-[#D97706]/20 rounded-lg p-3 con ícono ⚠️ y texto "Pedido de {cliente} tiene items que requieren confirmación" y CTA "Ver en Pedidos del Día →" en text-[#1A7A3C] font-medium underline
-
-Error o no reconocido: banner bg-[#FEF2F2] border border-[#EF4444]/20 rounded-lg p-3 con ícono ❌ y mensaje de error, con CTA "Intentar de nuevo" que limpia el textarea y pone foco.
-
-## Pestaña — Pedidos del Día
-
-### KPI bar (top)
-3 cards en fila: Total del día, Confirmados, Ambiguos.
-- Card: bg-white rounded-xl border border-[#DDE8DD] p-4
-- Número: text-2xl font-bold text-[#0F1F0F]
-- Label: text-xs text-[#8FAE8C] uppercase tracking-wide
-
-### Tabla de pedidos
-- Header: bg-[#F0F7F0] text-xs font-semibold text-[#4A6349] uppercase tracking-wide
-- Filas: border-b border-[#DDE8DD] hover:bg-[#F0F7F0] cursor-pointer transition-colors
-- Click en fila expande detalle inline en acordeón — eliminar el botón "Ver detalle" separado
-- Columnas: CLIENTE | PRODUCTOS | TOTAL | STATUS
-
-### Empty state
-Ícono 📋 centrado, texto "No hay pedidos hoy", subtexto "Pega un mensaje de WhatsApp en Nuevo Pedido para comenzar." Todo en text-[#8FAE8C].
-
-## Componentes — Badges
-
-Confirmado: bg #E6F4EC, texto #1A7A3C, border #1A7A3C/20
-Ambiguo: bg #FFFBEB, texto #D97706, border #D97706/20
-Requiere confirmación: bg #FEF9C3, texto #854D0E, border #D97706/20
-Producto no reconocido: bg #FEF2F2, texto #EF4444, border #EF4444/20
-Todos: rounded-full px-2.5 py-0.5 text-xs font-medium border
+|-------|-----|-----|
+| Brand Background | #F0F7F0 | Fondo general, headers de cards |
+| Surface White | #ffffff | Fondo de filas de tabla, inputs |
+| Border / Divider | #DDE8DD | Bordes de cards, divisores de tabla |
+| Text Primary | #0F1F0F | Títulos, valores importantes |
+| Text Secondary | #4A6349 | Labels, texto de tabla, subtítulos |
+| Text Muted | #8FAE8C | Timestamps, placeholders, hints |
+| Green Confirmed BG | #E6F4EC | Badge OK, tab selector background |
+| Green Confirmed Text | #1A7A3C | Texto badge OK, acciones primarias |
+| Green Hover | #15612F | Hover en botones primarios |
+| Amber Ambiguous BG | #FEF9C3 | Badge "Requiere confirmación" |
+| Amber Ambiguous Text | #854D0E | Texto badge ambiguo |
+| Amber Icon | #D97706 | Ícono de producto ambiguo |
+| Error Text | #EF4444 | "Producto no reconocido" |
 
 ## Tipografía
 
-- Font: Inter (ya incluido con Tailwind/Next.js)
-- Títulos de sección: text-lg font-semibold text-[#0F1F0F]
-- Labels: text-sm font-semibold text-[#4A6349]
-- Body y tabla: text-sm text-[#0F1F0F]
-- Muted y metadata: text-xs text-[#8FAE8C]
+| Rol | Font | Clase Tailwind |
+|-----|------|----------------|
+| Títulos / Headings | Plus Jakarta Sans | font-[family-name:var(--font-display)] |
+| Body / UI | Inter | font-[family-name:var(--font-body)] (default) |
 
-## Reglas generales
+Escala usada:
+- text-xs (12px): badges, labels, timestamps, uppercase headers de tabla
+- text-sm (14px): body principal, botones, contenido de tabla
+- text-base (16px): inputs, textarea de parseo
+- text-xl+: reservado para KPIs futuros
 
-- Sin gradientes en botones ni backgrounds
-- Sin sombras agresivas — solo shadow-sm donde sea necesario
-- Border-radius consistente: rounded-lg para inputs y botones, rounded-xl para cards
-- Spacing base 4px — usar escala de Tailwind (p-2, p-4, p-6)
-- No usar azul en ningún componente — verde es el único color de acento
+## Componentes
+
+Card / Panel: overflow-hidden rounded-lg border border-[#DDE8DD]
+Header de card: border-b border-[#DDE8DD] bg-[#F0F7F0] px-4 py-3
+
+Badge confirmado: inline-flex items-center rounded-full border border-[#1A7A3C]/20 bg-[#E6F4EC] px-2.5 py-0.5 text-xs font-medium text-[#1A7A3C]
+
+Badge ambiguo: inline-flex items-center rounded-full border border-[#D97706]/20 bg-[#FEF9C3] px-2.5 py-0.5 text-xs font-medium text-[#854D0E]
+
+Badge conteo/info: inline-flex items-center rounded-full border border-[#1A7A3C]/20 bg-[#E6F4EC] px-2.5 py-0.5 text-xs font-medium text-[#1A7A3C]
+
+Chip sinónimo: inline-flex items-center rounded-full bg-[#F0F7F0] border border-[#DDE8DD] px-2 py-0.5 text-xs text-[#4A6349]
+
+Botón primario: rounded-md bg-[#1A7A3C] px-3 py-1.5 text-xs font-medium text-white hover:bg-[#15612F]
+
+Botón secundario: rounded-md bg-white px-3 py-1.5 text-xs font-medium text-[#4A6349] ring-1 ring-inset ring-[#DDE8DD] hover:bg-[#F0F7F0]
+
+Input: rounded-md border border-[#DDE8DD] px-3 py-1.5 text-sm text-[#0F1F0F] bg-white focus:outline-none focus:ring-1 focus:ring-[#1A7A3C]
+
+Tab contenedor: flex gap-1 rounded-lg bg-[#E6F4EC] p-1 w-fit
+Tab activo: rounded-md bg-white px-4 py-1.5 text-sm font-semibold text-[#1A7A3C] shadow-sm
+Tab inactivo: rounded-md px-4 py-1.5 text-sm font-medium text-[#4A6349] hover:text-[#1A7A3C]
+
+Tabla thead: bg-[#F0F7F0]
+Tabla th: px-4 py-2 text-left text-xs font-semibold uppercase tracking-wide text-[#4A6349]
+Tabla tbody: divide-y divide-[#DDE8DD] bg-white
+Tabla td: px-4 py-2 text-sm text-[#0F1F0F]
+
+## Reglas de Diseño
+
+1. Nunca usar colores fuera de la paleta definida
+2. Bordes siempre con border-[#DDE8DD], nunca border-gray-*
+3. Texto nunca text-gray-*, siempre los tokens de la paleta
+4. Cards siempre con rounded-lg, nunca rounded-xl ni rounded-2xl
+5. Espaciado interno de cards: px-4 py-3 (header), px-4 py-2 (filas)
+6. Sombras: solo shadow-sm en elementos flotantes (tab activo, modales)
+7. Estados hover: solo en elementos interactivos, nunca en texto estático

@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "FrescoMX — Panel de Pedidos",
+  title: "FrescoMX",
   description: "Estructura pedidos de WhatsApp automáticamente",
 };
 
