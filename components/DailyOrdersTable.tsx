@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import { DailyOrder, OrderStatus } from '@/lib/types';
 import OrderTable from './OrderTable';
 
@@ -102,9 +102,8 @@ export default function DailyOrdersTable({ orders, onOrderChange }: DailyOrdersT
           </thead>
           <tbody>
             {orders.map((order) => (
-              <>
+              <Fragment key={order.id}>
                 <tr
-                  key={order.id}
                   onClick={() => setExpandedOrderId(expandedOrderId === order.id ? null : order.id)}
                   className="cursor-pointer border-b border-[#DDE8DD] transition-colors hover:bg-[#F0F7F0]"
                 >
@@ -148,7 +147,7 @@ export default function DailyOrdersTable({ orders, onOrderChange }: DailyOrdersT
                     </td>
                   </tr>
                 )}
-              </>
+              </Fragment>
             ))}
           </tbody>
         </table>
