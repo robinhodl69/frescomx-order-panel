@@ -60,13 +60,13 @@ Estados: [ ] pendiente · [~] en progreso · [x] completado
 
 ## Tarea 6 — Tabla de pedidos editable
 **Archivo:** `components/OrderTable.tsx`
-- [ ] Columnas: cliente, producto, cantidad, unidad, precio unitario, subtotal, estado
-- [ ] Edición inline de cantidad y unidad
-- [ ] Recálculo automático de subtotal al editar
-- [ ] Badge visual para items ambiguos ("⚠ Requiere confirmación")
-- [ ] Totales bloqueados `$—` para pedidos completamente ambiguos
-- [ ] Fallback para producto no reconocido: nombre tal como llegó + precio $0 + badge
-- [ ] `feat: order table with editable rows and ambiguity flags`
+- [x] Columnas: cliente, producto, cantidad, unidad, precio unitario, subtotal, estado
+- [x] Edición inline de cantidad y unidad
+- [x] Recálculo automático de subtotal al editar
+- [x] Badge visual para items ambiguos ("⚠ Requiere confirmación")
+- [x] Totales bloqueados `$—` para pedidos completamente ambiguos
+- [x] Fallback para producto no reconocido: nombre tal como llegó + precio $0 + badge
+- [x] `feat: order table with editable rows and ambiguity flags`
 
 ## Tarea 7 — Página principal
 **Archivo:** `app/page.tsx`
