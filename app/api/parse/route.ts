@@ -29,11 +29,13 @@ REGLAS IMPORTANTES:
 - Usa EXACTAMENTE los ids del catálogo para producto_id cuando reconozcas un producto.
 - Si un producto NO está en el catálogo o NO tienes certeza de cuál es, producto_id DEBE ser null. NUNCA inventes un id.
 - producto_id es null en estos casos: producto desconocido, cantidad ambigua ("lo de siempre", "lo usual"), o sinónimo que no reconozcas del catálogo.
+- Si el producto es una variante o descripción extendida de uno del catálogo (ej: "aguacate hass maduros" = "aguacate hass", "jitomate guaje" = "jitomate"), usa el id del catálogo y marca ambiguo: false.
 - Marca ambiguo: true cuando la cantidad o el producto no estén claros (ej: "lo de siempre", "manda lo de siempre").
 - Si TODO el mensaje es ambiguo (no hay productos claros), marca pedido_ambiguo: true.
 - precio_unitario debe ser el precio del catálogo para productos reconocidos, o 0 si no está en catálogo.
 - subtotal = cantidad × precio_unitario.
 - La unidad debe ser la del catálogo para productos reconocidos.
+- Para el campo "cliente": extrae el nombre del NEGOCIO o CLIENTE que hace el pedido, NO el nombre del repartidor o destinatario del mensaje. Ejemplo: "hola lalo, somos Hotel Mítico" → cliente = "Hotel Mítico". Si el cliente firma al final del mensaje, ese es el cliente.
 
 MENSAJE A PARSEAR:
 """
