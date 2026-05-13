@@ -29,7 +29,7 @@ function formatDate(date: Date): string {
 
 export default function Home() {
   const [orders, setOrders] = useState<DailyOrder[]>([]);
-  const [activeTab, setActiveTab] = useState<'catalogo' | 'nuevo' | 'pedidos'>('catalogo');
+  const [activeTab, setActiveTab] = useState<'catalogo' | 'nuevo' | 'pedidos'>('nuevo');
   const [lastParsedOrder, setLastParsedOrder] = useState<DailyOrder | null>(null);
   const [parseError, setParseError] = useState<string | null>(null);
 
