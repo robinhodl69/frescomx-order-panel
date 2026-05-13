@@ -78,11 +78,12 @@ Estados: [ ] pendiente · [~] en progreso · [x] completado
 - [x] Estado de error con botón de reintentar si API falla
 - [x] `feat: main page with daily totals and error handling`
 
-## Tarea 8 — Instrucciones para Copilot
-**Archivo:** `.github/copilot-instructions.md`
-- [ ] Stack, constraints y flujo de trabajo documentados
-- [ ] Regla de no hacer commits sin aprobación
-- [ ] `chore: copilot instructions`
+## Tarea 8 — Instrucciones para el Agente
+**Archivo:** `AGENTS.md` (fuente de verdad)
+- [x] Stack, constraints y flujo de trabajo documentados
+- [x] Regla de no hacer commits sin aprobación
+- [x] Nota: archivo `.github/copilot-instructions.md` eliminado — no se usa GitHub Copilot
+- [x] `chore: consolidate agent instructions into AGENTS.md`
 
 ***
 

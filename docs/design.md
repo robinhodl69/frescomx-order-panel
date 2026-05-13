@@ -125,9 +125,7 @@ frescomx-order-panel/
 │   ├── requirements.md           # User stories en EARS
 │   ├── design.md                 # Este archivo
 │   └── tasks.md                  # Checklist de commits
-├── AGENTS.md                     # Instrucciones para OpenCode
-└── .github/
-    └── copilot-instructions.md   # Instrucciones para Copilot
+└── AGENTS.md                     # Instrucciones para OpenCode (fuente de verdad del agente)
 ```
 
 ***
