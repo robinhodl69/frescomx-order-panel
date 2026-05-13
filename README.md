@@ -4,7 +4,9 @@ A functional web panel for FrescoMX operators (B2B fruit & vegetable distributor
 
 ![FrescoMX Nuevo Pedido](docs/screenshots/nuevo-pedido.png)
 
-**Demo:** _pending deploy_
+**Demo:** [https://frescomx-order-panel.vercel.app/](https://frescomx-order-panel.vercel.app/)
+
+**Process Document:** [https://docs.google.com/document/d/1WDBD0HIPpQHmhxnSa_k-LJJNsHvEDKBWL6iFDwJqxpg/edit?usp=sharing](https://docs.google.com/document/d/1WDBD0HIPpQHmhxnSa_k-LJJNsHvEDKBWL6iFDwJqxpg/edit?usp=sharing)
 
 ---
 

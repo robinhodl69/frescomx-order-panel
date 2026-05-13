@@ -93,7 +93,7 @@ Estados: [ ] pendiente · [~] en progreso · [x] completado
 
 ## Entrega final
 
-- [ ] `docs: README final` — stack, setup local, variables de entorno, decisiones, trade-offs, URL demo
-- [ ] Deploy en Vercel y URL pública funcionando
-- [ ] Grabar Loom máx 10 min: herramientas usadas, decisiones, qué haría diferente
-- [ ] Enviar a admin@trazo.pro: URL demo + URL repo + URL Loom antes de las 23:59
+- [x] `docs: README final` — stack, setup local, variables de entorno, decisiones, trade-offs, URL demo
+- [x] Deploy en Vercel y URL pública funcionando
+- [x] Grabar Loom máx 10 min: herramientas usadas, decisiones, qué haría diferente
+- [x] Enviar a admin@trazo.pro: URL demo + URL repo + URL Loom antes de las 23:59
