@@ -79,6 +79,7 @@ Estados: [ ] pendiente · [~] en progreso · [x] completado
 - [x] Formato de moneda `$X,XXX.XX MXN`
 - [x] Estado de error con botón de reintentar si API falla
 - [x] `feat: main page with daily totals and error handling`
+- [x] `fix: order status is ambiguous if any item is ambiguous`
 
 ## Tarea 8 — Instrucciones para el Agente
 **Archivo:** `AGENTS.md` (fuente de verdad)
