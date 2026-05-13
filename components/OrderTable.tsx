@@ -21,22 +21,22 @@ function StatusBadge({ status }: { status: OrderStatus }) {
   const config: Record<OrderStatus, { label: string; classes: string }> = {
     confirmed: {
       label: 'Confirmado',
-      classes: 'bg-green-100 text-green-800',
+      classes: 'bg-[#E6F4EC] text-[#1A7A3C] border-[#1A7A3C]/20',
     },
     ambiguous: {
       label: 'Ambiguo',
-      classes: 'bg-amber-100 text-amber-800',
+      classes: 'bg-[#FFFBEB] text-[#D97706] border-[#D97706]/20',
     },
     pending: {
       label: 'Pendiente',
-      classes: 'bg-gray-100 text-gray-800',
+      classes: 'bg-[#E6F4EC] text-[#1A7A3C] border-[#1A7A3C]/20',
     },
   };
 
   const { label, classes } = config[status];
 
   return (
-    <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${classes}`}>
+    <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${classes}`}>
       {label}
     </span>
   );
@@ -96,113 +96,113 @@ export default function OrderTable({ order, onOrderChange }: OrderTableProps) {
   };
 
   return (
-    <div className="overflow-x-auto rounded-lg border border-gray-200">
-      <div className="border-b border-gray-200 bg-gray-50 px-4 py-3">
+    <div className="overflow-hidden rounded-lg border border-[#DDE8DD]">
+      <div className="border-b border-[#DDE8DD] bg-[#F0F7F0] px-4 py-3">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-sm font-semibold text-gray-900">{order.client || 'Cliente no identificado'}</h3>
-            <p className="text-xs text-gray-500">{new Date(order.createdAt).toLocaleString('es-MX')}</p>
+            <h3 className="text-sm font-semibold text-[#0F1F0F]">{order.client || 'Cliente no identificado'}</h3>
+            <p className="text-xs text-[#8FAE8C]">{new Date(order.createdAt).toLocaleString('es-MX')}</p>
           </div>
           <div className="flex items-center gap-3">
             <StatusBadge status={order.status} />
-            <span className="text-lg font-bold text-gray-900">
+            <span className="text-lg font-bold text-[#0F1F0F]">
               {formatCurrency(order.total)}
             </span>
           </div>
         </div>
       </div>
 
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+      <table className="min-w-full divide-y divide-[#DDE8DD]">
+        <thead className="bg-[#F0F7F0]">
           <tr>
-            <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+            <th className="px-4 py-2 text-left text-xs font-semibold uppercase tracking-wide text-[#4A6349]">
               Producto
             </th>
-            <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+            <th className="px-4 py-2 text-left text-xs font-semibold uppercase tracking-wide text-[#4A6349]">
               Cantidad
             </th>
-            <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+            <th className="px-4 py-2 text-left text-xs font-semibold uppercase tracking-wide text-[#4A6349]">
               Unidad
             </th>
-            <th className="px-4 py-2 text-right text-xs font-medium uppercase tracking-wider text-gray-500">
+            <th className="px-4 py-2 text-right text-xs font-semibold uppercase tracking-wide text-[#4A6349]">
               Precio Unit.
             </th>
-            <th className="px-4 py-2 text-right text-xs font-medium uppercase tracking-wider text-gray-500">
+            <th className="px-4 py-2 text-right text-xs font-semibold uppercase tracking-wide text-[#4A6349]">
               Subtotal
             </th>
-            <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+            <th className="px-4 py-2 text-left text-xs font-semibold uppercase tracking-wide text-[#4A6349]">
               Estado
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200 bg-white">
+        <tbody className="divide-y divide-[#DDE8DD] bg-white">
           {order.items.map((item, index) => (
             <tr
               key={index}
-              className={item.ambiguous ? 'bg-amber-50/30' : undefined}
+              className={item.ambiguous ? 'bg-[#FFFBEB]/30' : undefined}
             >
-              <td className="px-4 py-2 text-sm text-gray-900">
+              <td className="px-4 py-2 text-sm text-[#0F1F0F]">
                 <div className="flex items-center gap-2">
                   {item.name}
                   {item.ambiguous && (
-                    <span className="text-amber-600" title="Requiere confirmación">
+                    <span className="text-[#D97706]" title="Requiere confirmación">
                       ⚠
                     </span>
                   )}
                 </div>
                 {item.productId === null && (
-                  <span className="text-xs text-red-600">Producto no reconocido</span>
+                  <span className="text-xs text-[#EF4444]">Producto no reconocido</span>
                 )}
               </td>
-              <td className="px-4 py-2 text-sm text-gray-700">
+              <td className="px-4 py-2 text-sm text-[#4A6349]">
                 {editingIndex === index ? (
                   <input
                     type="number"
                     value={editQuantity}
                     onChange={(e) => setEditQuantity(e.target.value)}
-                    className="w-20 rounded-md border border-gray-300 px-2 py-1 text-sm"
+                    className="w-20 rounded-md border border-[#DDE8DD] px-2 py-1 text-sm"
                     min="0"
                     step="0.1"
                   />
                 ) : (
                   <button
                     onClick={() => handleStartEdit(index, item)}
-                    className="hover:text-blue-600"
+                    className="hover:text-[#1A7A3C]"
                   >
                     {item.quantity}
                   </button>
                 )}
               </td>
-              <td className="px-4 py-2 text-sm text-gray-700">
+              <td className="px-4 py-2 text-sm text-[#4A6349]">
                 {editingIndex === index ? (
                   <input
                     type="text"
                     value={editUnit}
                     onChange={(e) => setEditUnit(e.target.value)}
-                    className="w-24 rounded-md border border-gray-300 px-2 py-1 text-sm"
+                    className="w-24 rounded-md border border-[#DDE8DD] px-2 py-1 text-sm"
                   />
                 ) : (
                   <button
                     onClick={() => handleStartEdit(index, item)}
-                    className="hover:text-blue-600"
+                    className="hover:text-[#1A7A3C]"
                   >
                     {item.unit}
                   </button>
                 )}
               </td>
-              <td className="px-4 py-2 text-right text-sm text-gray-700">
+              <td className="px-4 py-2 text-right text-sm text-[#4A6349]">
                 {formatCurrency(item.unitPrice)}
               </td>
-              <td className="px-4 py-2 text-right text-sm font-medium text-gray-900">
+              <td className="px-4 py-2 text-right text-sm font-medium text-[#0F1F0F]">
                 {formatCurrency(item.subtotal)}
               </td>
               <td className="px-4 py-2 text-sm">
                 {item.ambiguous ? (
-                  <span className="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800">
+                  <span className="inline-flex items-center rounded-full border border-[#D97706]/20 bg-[#FEF9C3] px-2.5 py-0.5 text-xs font-medium text-[#854D0E]">
                     Requiere confirmación
                   </span>
                 ) : (
-                  <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
+                  <span className="inline-flex items-center rounded-full border border-[#1A7A3C]/20 bg-[#E6F4EC] px-2.5 py-0.5 text-xs font-medium text-[#1A7A3C]">
                     OK
                   </span>
                 )}
@@ -213,16 +213,16 @@ export default function OrderTable({ order, onOrderChange }: OrderTableProps) {
       </table>
 
       {editingIndex !== null && (
-        <div className="flex items-center justify-end gap-2 border-t border-gray-200 bg-gray-50 px-4 py-2">
+        <div className="flex items-center justify-end gap-2 border-t border-[#DDE8DD] bg-[#F0F7F0] px-4 py-2">
           <button
             onClick={handleCancelEdit}
-            className="rounded-md bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            className="rounded-md bg-white px-3 py-1.5 text-xs font-medium text-[#4A6349] ring-1 ring-inset ring-[#DDE8DD] hover:bg-[#F0F7F0]"
           >
             Cancelar
           </button>
           <button
             onClick={() => handleSaveEdit(editingIndex)}
-            className="rounded-md bg-blue-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-blue-500"
+            className="rounded-md bg-[#1A7A3C] px-3 py-1.5 text-xs font-medium text-white hover:bg-[#15612F]"
           >
             Guardar
           </button>

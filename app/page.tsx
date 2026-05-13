@@ -16,19 +16,23 @@ function formatCurrency(amount: number | null): string {
   }).format(amount);
 }
 
+function formatDate(date: Date): string {
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  };
+  return date.toLocaleDateString('es-MX', options);
+}
+
 export default function Home() {
   const [orders, setOrders] = useState<DailyOrder[]>([]);
-  const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<'nuevo' | 'pedidos'>('nuevo');
+  const [lastParsedOrder, setLastParsedOrder] = useState<DailyOrder | null>(null);
   const [parseError, setParseError] = useState<string | null>(null);
 
   const catalog = loadCatalog();
-
-  const calculateDailyTotal = useCallback((): number => {
-    return orders.reduce((sum, order) => {
-      if (order.status === 'ambiguous') return sum;
-      return sum + (order.total ?? 0);
-    }, 0);
-  }, [orders]);
 
   const handleParsed = useCallback(
     (parsed: ParsedOrder) => {
@@ -53,71 +57,119 @@ export default function Home() {
       };
 
       setOrders((prev) => [newOrder, ...prev]);
-      setSelectedOrderId(newOrder.id);
+      setLastParsedOrder(newOrder);
     },
     [catalog]
   );
 
   const handleOrderChange = useCallback((updatedOrder: DailyOrder) => {
     setOrders((prev) => prev.map((o) => (o.id === updatedOrder.id ? updatedOrder : o)));
+    setLastParsedOrder((prev) => (prev?.id === updatedOrder.id ? updatedOrder : prev));
   }, []);
 
-  const selectedOrder = orders.find((o) => o.id === selectedOrderId);
+  const handleRetry = () => {
+    setParseError(null);
+    const textarea = document.getElementById('whatsapp-message') as HTMLTextAreaElement;
+    if (textarea) {
+      textarea.focus();
+    }
+  };
+
+  const today = new Date();
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <main className="mx-auto max-w-5xl px-4 py-8">
-        <header className="mb-8">
-          <h1 className="text-2xl font-bold text-gray-900">FrescoMX — Panel de Pedidos</h1>
-          <p className="text-sm text-gray-500">Estructura pedidos de WhatsApp automáticamente</p>
-        </header>
+    <div className="flex min-h-screen">
+      {/* Sidebar */}
+      <aside className="sticky top-0 h-screen w-52 border-r border-[#DDE8DD] bg-[#F0F7F0] p-4">
+        <div className="mb-6">
+          <div className="flex items-center gap-2 text-lg font-semibold text-[#1A7A3C]">
+            <span>🥦</span>
+            <span>FrescoMX</span>
+          </div>
+          <p className="mt-1 text-xs text-[#8FAE8C]">{formatDate(today)}</p>
+        </div>
 
-        <section className="mb-8 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-          <h2 className="mb-4 text-lg font-semibold text-gray-900">Nuevo Pedido</h2>
-          <ParseInput
-            onParsed={handleParsed}
-          />
-          {parseError && (
-            <div className="mt-3 flex items-center gap-2 rounded-md bg-red-50 p-3 text-sm text-red-700">
-              <span>{parseError}</span>
-              <button
-                onClick={() => setParseError(null)}
-                className="ml-auto rounded-md bg-red-100 px-2 py-1 text-xs font-medium hover:bg-red-200"
-              >
-                Reintentar
-              </button>
-            </div>
-          )}
-        </section>
+        <nav className="space-y-1">
+          <button
+            onClick={() => setActiveTab('nuevo')}
+            className={`w-full rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors ${
+              activeTab === 'nuevo'
+                ? 'bg-[#E6F4EC] font-semibold text-[#1A7A3C]'
+                : 'text-[#4A6349] hover:bg-[#E6F4EC] hover:text-[#1A7A3C]'
+            }`}
+          >
+            Nuevo Pedido
+          </button>
+          <button
+            onClick={() => setActiveTab('pedidos')}
+            className={`w-full rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors ${
+              activeTab === 'pedidos'
+                ? 'bg-[#E6F4EC] font-semibold text-[#1A7A3C]'
+                : 'text-[#4A6349] hover:bg-[#E6F4EC] hover:text-[#1A7A3C]'
+            }`}
+          >
+            Pedidos del Día
+          </button>
+        </nav>
+      </aside>
 
-        {selectedOrder && (
-          <section className="mb-8">
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-gray-900">Detalle del Pedido</h2>
-              <button
-                onClick={() => setSelectedOrderId(null)}
-                className="text-sm text-gray-500 hover:text-gray-700"
-              >
-                Cerrar
-              </button>
-            </div>
-            <OrderTable order={selectedOrder} onOrderChange={handleOrderChange} />
-          </section>
-        )}
+      {/* Contenido principal */}
+      <main className="flex-1 p-8">
+        {activeTab === 'nuevo' && (
+          <div className="mx-auto max-w-2xl">
+            <div className="rounded-xl border border-[#DDE8DD] bg-white p-6 shadow-sm">
+              <h2 className="mb-4 text-lg font-semibold text-[#0F1F0F]">Nuevo Pedido</h2>
+              <ParseInput onParsed={handleParsed} />
 
-        <section>
-          <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-gray-900">Pedidos del Día</h2>
-            <div className="text-right">
-              <p className="text-sm text-gray-500">Total del día</p>
-              <p className="text-xl font-bold text-gray-900">{formatCurrency(calculateDailyTotal())}</p>
+              {/* Feedback post-parseo */}
+              {lastParsedOrder && !parseError && (
+                <div className="mt-4">
+                  {lastParsedOrder.status === 'confirmed' ? (
+                    <div className="rounded-lg border border-[#1A7A3C]/20 bg-[#E6F4EC] p-3 text-sm text-[#1A7A3C]">
+                      ✅ Pedido de {lastParsedOrder.client} creado — {formatCurrency(lastParsedOrder.total)}
+                    </div>
+                  ) : (
+                    <div className="rounded-lg border border-[#D97706]/20 bg-[#FFFBEB] p-3 text-sm text-[#D97706]">
+                      <p>⚠️ Pedido de {lastParsedOrder.client} tiene items que requieren confirmación</p>
+                      <button
+                        onClick={() => setActiveTab('pedidos')}
+                        className="mt-1 text-sm font-medium text-[#1A7A3C] underline"
+                      >
+                        Ver en Pedidos del Día →
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {parseError && (
+                <div className="mt-4 rounded-lg border border-[#EF4444]/20 bg-[#FEF2F2] p-3 text-sm text-[#EF4444]">
+                  <p>❌ {parseError}</p>
+                  <button
+                    onClick={handleRetry}
+                    className="mt-1 text-sm font-medium text-[#EF4444] underline"
+                  >
+                    Intentar de nuevo
+                  </button>
+                </div>
+              )}
+
+              {/* OrderTable del último pedido parseado */}
+              {lastParsedOrder && (
+                <div className="mt-6">
+                  <OrderTable order={lastParsedOrder} onOrderChange={handleOrderChange} />
+                </div>
+              )}
             </div>
           </div>
-          <DailyOrdersTable
-            orders={orders}
-            onViewDetail={(orderId) => setSelectedOrderId(orderId)}
-          />
-        </section>
+        )}
+
+        {activeTab === 'pedidos' && (
+          <div>
+            <h2 className="mb-6 text-lg font-semibold text-[#0F1F0F]">Pedidos del Día</h2>
+            <DailyOrdersTable orders={orders} onOrderChange={handleOrderChange} />
+          </div>
+        )}
       </main>
     </div>
   );
