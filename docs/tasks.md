@@ -43,6 +43,7 @@ Estados: [ ] pendiente · [~] en progreso · [x] completado
 - [x] Responde 500 con mensaje descriptivo si OpenAI falla
 - [x] `feat: OpenAI parse API route`
 - [x] `fix: improve prompt client extraction and fuzzy product matching`
+- [x] `fix: handle unit mismatch with ambiguity flag`
 
 ## Tarea 5 — Componente de entrada de texto
 **Archivo:** `components/ParseInput.tsx`
