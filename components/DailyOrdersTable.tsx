@@ -69,15 +69,15 @@ export default function DailyOrdersTable({ orders, onOrderChange }: DailyOrdersT
       <div className="grid grid-cols-3 gap-4">
         <div className="rounded-xl border border-[#DDE8DD] bg-white p-4 shadow-sm">
           <p className="text-xs uppercase tracking-wide text-[#8FAE8C]">Total del día</p>
-          <p className="text-2xl font-bold text-[#0F1F0F]">{formatCurrency(dailyTotal)}</p>
+          <p className="text-2xl font-bold text-[#0F1F0F] font-[family-name:var(--font-display)]">{formatCurrency(dailyTotal)}</p>
         </div>
         <div className="rounded-xl border border-[#DDE8DD] bg-white p-4 shadow-sm">
           <p className="text-xs uppercase tracking-wide text-[#8FAE8C]">Confirmados</p>
-          <p className="text-2xl font-bold text-[#1A7A3C]">{confirmedCount}</p>
+          <p className="text-2xl font-bold text-[#1A7A3C] font-[family-name:var(--font-display)]">{confirmedCount}</p>
         </div>
         <div className="rounded-xl border border-[#DDE8DD] bg-white p-4 shadow-sm">
           <p className="text-xs uppercase tracking-wide text-[#8FAE8C]">Ambiguos</p>
-          <p className="text-2xl font-bold text-[#D97706]">{ambiguousCount}</p>
+          <p className="text-2xl font-bold text-[#D97706] font-[family-name:var(--font-display)]">{ambiguousCount}</p>
         </div>
       </div>
 

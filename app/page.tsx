@@ -82,7 +82,7 @@ export default function Home() {
       {/* Sidebar */}
       <aside className="sticky top-0 h-screen w-52 border-r border-[#DDE8DD] bg-[#F0F7F0] p-4">
         <div className="mb-6">
-          <div className="flex items-center gap-2 text-lg font-semibold text-[#1A7A3C]">
+          <div className="flex items-center gap-2 text-lg font-semibold text-[#1A7A3C] font-[family-name:var(--font-display)]">
             <span>🥦</span>
             <span>FrescoMX</span>
           </div>
@@ -116,57 +116,59 @@ export default function Home() {
       {/* Contenido principal */}
       <main className="flex-1 p-8">
         {activeTab === 'nuevo' && (
-          <div className="mx-auto max-w-2xl">
-            <div className="rounded-xl border border-[#DDE8DD] bg-white p-6 shadow-sm">
-              <h2 className="mb-4 text-lg font-semibold text-[#0F1F0F]">Nuevo Pedido</h2>
-              <ParseInput onParsed={handleParsed} />
+          <div className="flex min-h-full items-center justify-center">
+            <div className="mx-auto max-w-2xl w-full">
+              <div className="rounded-xl border border-[#DDE8DD] bg-white p-6 shadow-sm">
+                <h2 className="mb-4 text-lg font-semibold text-[#0F1F0F] font-[family-name:var(--font-display)]">Nuevo Pedido</h2>
+                <ParseInput onParsed={handleParsed} />
 
-              {/* Feedback post-parseo */}
-              {lastParsedOrder && !parseError && (
-                <div className="mt-4">
-                  {lastParsedOrder.status === 'confirmed' ? (
-                    <div className="rounded-lg border border-[#1A7A3C]/20 bg-[#E6F4EC] p-3 text-sm text-[#1A7A3C]">
-                      ✅ Pedido de {lastParsedOrder.client} creado — {formatCurrency(lastParsedOrder.total)}
-                    </div>
-                  ) : (
-                    <div className="rounded-lg border border-[#D97706]/20 bg-[#FFFBEB] p-3 text-sm text-[#D97706]">
-                      <p>⚠️ Pedido de {lastParsedOrder.client} tiene items que requieren confirmación</p>
-                      <button
-                        onClick={() => setActiveTab('pedidos')}
-                        className="mt-1 text-sm font-medium text-[#1A7A3C] underline"
-                      >
-                        Ver en Pedidos del Día →
-                      </button>
-                    </div>
-                  )}
-                </div>
-              )}
+                {/* Feedback post-parseo */}
+                {lastParsedOrder && !parseError && (
+                  <div className="mt-4">
+                    {lastParsedOrder.status === 'confirmed' ? (
+                      <div className="rounded-lg border border-[#1A7A3C]/20 bg-[#E6F4EC] p-3 text-sm text-[#1A7A3C]">
+                        ✅ Pedido de {lastParsedOrder.client} creado — {formatCurrency(lastParsedOrder.total)}
+                      </div>
+                    ) : (
+                      <div className="rounded-lg border border-[#D97706]/20 bg-[#FFFBEB] p-3 text-sm text-[#D97706]">
+                        <p>⚠️ Pedido de {lastParsedOrder.client} tiene items que requieren confirmación</p>
+                        <button
+                          onClick={() => setActiveTab('pedidos')}
+                          className="mt-1 text-sm font-medium text-[#1A7A3C] underline"
+                        >
+                          Ver en Pedidos del Día →
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
 
-              {parseError && (
-                <div className="mt-4 rounded-lg border border-[#EF4444]/20 bg-[#FEF2F2] p-3 text-sm text-[#EF4444]">
-                  <p>❌ {parseError}</p>
-                  <button
-                    onClick={handleRetry}
-                    className="mt-1 text-sm font-medium text-[#EF4444] underline"
-                  >
-                    Intentar de nuevo
-                  </button>
-                </div>
-              )}
+                {parseError && (
+                  <div className="mt-4 rounded-lg border border-[#EF4444]/20 bg-[#FEF2F2] p-3 text-sm text-[#EF4444]">
+                    <p>❌ {parseError}</p>
+                    <button
+                      onClick={handleRetry}
+                      className="mt-1 text-sm font-medium text-[#EF4444] underline"
+                    >
+                      Intentar de nuevo
+                    </button>
+                  </div>
+                )}
 
-              {/* OrderTable del último pedido parseado */}
-              {lastParsedOrder && (
-                <div className="mt-6">
-                  <OrderTable order={lastParsedOrder} onOrderChange={handleOrderChange} />
-                </div>
-              )}
+                {/* OrderTable del último pedido parseado */}
+                {lastParsedOrder && (
+                  <div className="mt-6">
+                    <OrderTable order={lastParsedOrder} onOrderChange={handleOrderChange} />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         )}
 
         {activeTab === 'pedidos' && (
           <div>
-            <h2 className="mb-6 text-lg font-semibold text-[#0F1F0F]">Pedidos del Día</h2>
+            <h2 className="mb-6 text-lg font-semibold text-[#0F1F0F] font-[family-name:var(--font-display)]">Pedidos del Día</h2>
             <DailyOrdersTable orders={orders} onOrderChange={handleOrderChange} />
           </div>
         )}

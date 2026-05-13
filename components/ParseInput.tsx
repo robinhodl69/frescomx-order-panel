@@ -46,9 +46,6 @@ export default function ParseInput({ onParsed }: ParseInputProps) {
 
   return (
     <div className="space-y-3">
-      <label htmlFor="whatsapp-message" className="block text-sm font-semibold text-[#4A6349]">
-        Mensaje de WhatsApp
-      </label>
       <textarea
         id="whatsapp-message"
         rows={4}
@@ -57,7 +54,7 @@ export default function ParseInput({ onParsed }: ParseInputProps) {
           setText(e.target.value);
           if (error) setError(null);
         }}
-        placeholder="Ej: Buenas, para mañana mándame 10 kg jitomate, 5 cajas aguacate hass maduros, 2 manojos cilantro. Soy Marco del Rincón Oaxaqueño."
+        placeholder="Mi pedido"
         className="w-full resize-none rounded-lg border border-[#DDE8DD] bg-white p-3 text-sm text-[#0F1F0F] placeholder:text-[#8FAE8C] focus:border-[#1A7A3C] focus:outline-none focus:ring-2 focus:ring-[#1A7A3C]/10 min-h-[120px]"
       />
       {error && <p className="text-sm text-[#EF4444]">{error}</p>}
@@ -66,7 +63,7 @@ export default function ParseInput({ onParsed }: ParseInputProps) {
         disabled={loading}
         className="rounded-lg bg-[#1A7A3C] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#15612F] disabled:cursor-not-allowed disabled:opacity-50"
       >
-        {loading ? 'Parseando...' : 'Parsear pedido'}
+        {loading ? 'Parseando...' : 'Enviar Pedido'}
       </button>
     </div>
   );
