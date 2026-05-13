@@ -70,13 +70,13 @@ Estados: [ ] pendiente · [~] en progreso · [x] completado
 
 ## Tarea 7 — Página principal
 **Archivo:** `app/page.tsx`
-- [ ] Estado global de pedidos del día (`useState`)
-- [ ] Integra `ParseInput` + `OrderTable`
-- [ ] Total por pedido en MXN
-- [ ] Total agregado del día (excluye pedidos ambiguos sin resolver)
-- [ ] Formato de moneda `$X,XXX.XX MXN`
-- [ ] Estado de error con botón de reintentar si API falla
-- [ ] `feat: main page with daily totals and error handling`
+- [x] Estado global de pedidos del día (`useState`)
+- [x] Integra `ParseInput` + `OrderTable`
+- [x] Total por pedido en MXN
+- [x] Total agregado del día (excluye pedidos ambiguos sin resolver)
+- [x] Formato de moneda `$X,XXX.XX MXN`
+- [x] Estado de error con botón de reintentar si API falla
+- [x] `feat: main page with daily totals and error handling`
 
 ## Tarea 8 — Instrucciones para Copilot
 **Archivo:** `.github/copilot-instructions.md`
