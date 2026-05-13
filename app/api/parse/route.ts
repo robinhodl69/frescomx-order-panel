@@ -36,6 +36,7 @@ REGLAS IMPORTANTES:
 - subtotal = cantidad × precio_unitario.
 - La unidad debe ser la del catálogo para productos reconocidos.
 - Para el campo "cliente": extrae el nombre del NEGOCIO o CLIENTE que hace el pedido, NO el nombre del repartidor o destinatario del mensaje. Ejemplo: "hola lalo, somos Hotel Mítico" → cliente = "Hotel Mítico". Si el cliente firma al final del mensaje, ese es el cliente.
+- Cuando la unidad del mensaje no coincide con la del catálogo (ej: "cajas" en lugar de "kg"), igualmente usa el id del catálogo, usa la unidad del catálogo, y marca ambiguo: true para que el operador confirme la conversión.
 
 MENSAJE A PARSEAR:
 """
