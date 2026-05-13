@@ -52,7 +52,7 @@ export default function OrderTable({ order, onOrderChange }: OrderTableProps) {
   }, []);
 
   const calculateTotal = useCallback((items: OrderItem[]): number | null => {
-    if (items.some((item) => item.ambiguous && item.productId === null)) {
+    if (items.some((item) => item.ambiguous)) {
       return null;
     }
     return Math.round(items.reduce((sum, item) => sum + item.subtotal, 0) * 100) / 100;
@@ -79,7 +79,7 @@ export default function OrderTable({ order, onOrderChange }: OrderTableProps) {
     };
 
     const newTotal = calculateTotal(updatedItems);
-    const newStatus: OrderStatus = newTotal === null ? 'ambiguous' : 'confirmed';
+    const newStatus: OrderStatus = updatedItems.some((item) => item.ambiguous) ? 'ambiguous' : 'confirmed';
 
     onOrderChange({
       ...order,

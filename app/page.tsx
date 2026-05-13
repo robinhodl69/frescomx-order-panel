@@ -35,12 +35,12 @@ export default function Home() {
       setParseError(null);
 
       const items = buildOrderItems(parsed.items, catalog);
-      const hasAmbiguousItems = items.some((item) => item.ambiguous && item.productId === null);
+      const hasAmbiguousItems = items.some((item) => item.ambiguous);
       const total = hasAmbiguousItems
         ? null
         : Math.round(items.reduce((sum, item) => sum + item.subtotal, 0) * 100) / 100;
 
-      const status: OrderStatus = parsed.pedido_ambiguo || hasAmbiguousItems ? 'ambiguous' : 'confirmed';
+      const status: OrderStatus = hasAmbiguousItems ? 'ambiguous' : 'confirmed';
 
       const newOrder: DailyOrder = {
         id: crypto.randomUUID(),
