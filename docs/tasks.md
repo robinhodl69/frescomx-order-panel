@@ -42,6 +42,7 @@ Estados: [ ] pendiente · [~] en progreso · [x] completado
 - [x] Maneja items ambiguos con `ambiguo: true` y `producto_id: null`
 - [x] Responde 500 con mensaje descriptivo si OpenAI falla
 - [x] `feat: OpenAI parse API route`
+- [x] `fix: improve prompt client extraction and fuzzy product matching`
 
 ## Tarea 5 — Componente de entrada de texto
 **Archivo:** `components/ParseInput.tsx`
